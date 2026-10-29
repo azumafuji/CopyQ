@@ -41,14 +41,24 @@ UsePreviousLanguage=no
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 
-ArchitecturesAllowed=x64
-ArchitecturesInstallIn64BitMode=x64
+#ifndef ArchitecturesAllowed
+#define ArchitecturesAllowed "arm64 x64"
+#endif
+#ifndef ArchitecturesInstallIn64BitMode
+#define ArchitecturesInstallIn64BitMode "arm64 x64"
+#endif
+
+ArchitecturesAllowed={#ArchitecturesAllowed}
+ArchitecturesInstallIn64BitMode={#ArchitecturesInstallIn64BitMode}
 
 AllowNoIcons=yes
 LicenseFile={#Source}\shared\gpl-3.0.rtf
 OutputDir={#Output}
 PrivilegesRequiredOverridesAllowed=dialog
-OutputBaseFilename={#MyAppNameMin}-{#AppVersion}-setup
+#ifndef OutputBaseFilename
+#define OutputBaseFilename MyAppNameMin + "-" + AppVersion + "-setup"
+#endif
+OutputBaseFilename={#OutputBaseFilename}
 Compression=lzma
 SolidCompression=yes
 SetupIconFile={#Source}\src\images\icon.ico

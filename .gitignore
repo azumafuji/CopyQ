@@ -66,3 +66,8 @@ CMakeLists.txt.user*
 launchpad.key
 compile_commands.json
 uv.lock
+
+# Build & packaging artifacts
+/copyq-*
+/src/miniaudio.h
+*.zip
